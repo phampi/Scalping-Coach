@@ -1,7 +1,14 @@
-from flask import Flask, render_template_string
-import requests
+-from flask import Flask, render_template_string
++import os
++from flask import Flask, render_template_string
 
-app = Flask(__name__)
+ app = Flask(__name__)
+ 
+@@
+ if __name__ == "__main__":
+-    app.run(host="0.0.0.0", port=3000)
++    port = int(os.environ.get("PORT", 3000))
++    app.run(host="0.0.0.0", port=port)
 
 def get_live_price(symbol):
     url = f"https://api.binance.com/api/v3/ticker/price?symbol={symbol}"
