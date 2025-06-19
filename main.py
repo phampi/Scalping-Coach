@@ -33,5 +33,8 @@ def index():
     html = html.replace("<!-- Table rows will be inserted here -->", rows)
     return render_template_string(html)
 
+import os
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=3000)
+    port = int(os.environ.get("PORT", 3000))
+    app.run(host="0.0.0.0", port=port)
